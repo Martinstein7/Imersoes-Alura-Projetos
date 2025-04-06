@@ -1,0 +1,128 @@
+<!Doctype html>
+
+<html lang="pt-BR">
+    <body>
+        
+   <img
+   src="https://i.postimg.cc/GpCxYmvc/title.png" alt="Logo" class="Logo"> 
+
+   <div class="container">
+    <div class="content">
+      <h2> Conversor de Wons para Reais 💱 </h2>
+      <input type = "text" id="inputWons" placeholder="Digite o valor em Wons">
+      <br><br>
+      <button onclick="conversor()">Bora converter!</button> 
+      <p id="resultado" style="font-size: 20px; margin-top: 20px;"></p>
+    </div>
+    </div>
+    <footer> Alura - Imersão DEV 2025 </footer>
+    </body>
+
+<style>
+
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: black;
+    color: white;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}   
+
+/* Logo Styles */
+.logo {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    max-width: 150px;
+    width: auto;
+}
+
+/* container with the background image */
+.container {
+    background: url('https://i.postimg.cc/TY28jTqJ/bg4-ia.jpg') no-repeat center center/cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Content div for text and buttton */
+.content {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px 40px;
+    border-radius: 8px;
+}
+
+.content h2 {
+    margin-bottom: 20px;
+}
+
+/* Input Styles */
+input[type="text"] {
+    width: 250px;
+    padding: 10px;
+    font-size: 1.1em;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    outline: none;
+}
+
+/*Button Styles */
+
+button {
+    background-color: #ff1b7b;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #1ABC9C;
+}
+
+/* Resultado (onde aparece o valor convertido) */
+#resultado {
+    font-size: 1.2em;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/*Footer Styles */
+footer {
+    text-align: center;
+    padding: 10px;
+}
+
+</style>
+
+
+<script>
+    function conversor (){
+        let valorwons = document.getElementById("inputWons").value;
+
+        if (valorwons.trim() === "") {
+            document.getElementById("resultado").innerText = "❌ Digite um valor primeiro!";
+            return;
+        }
+
+        valorwons = valorwons.replace(",", ".");
+        valorwons = parseFloat(valorwons);
+        let resultadoElemento = document.getElementById("resultado");
+
+        if (!isNaN(valorwons)) {
+            let valorreal = valorwons * 0.0037;
+            resultadoElemento.innerText = "💰 Valor convertido: R$ " + valorreal.toFixed(2);
+        } else {
+            resultadoElemento.innerText = "❌ Por favor, digite um número válido.";
+        }
+    }
+</script>
+</html>
