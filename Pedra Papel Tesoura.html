@@ -1,0 +1,120 @@
+<!Doctype html>
+<html lang="pt-BR">
+    <body>
+        <img src="https://i.postimg.cc/GpCxYmvc/title.png" alt="Logo" class="logo">
+
+        <div class="container">
+            <div class="content">
+                <h2> Pra ganhar é preciso arriscar!</h2>
+                <p> PEDRA, PAPEL ou TESOURA?</p>
+            <button onclick="jogar()">Bora Jogar!</button>
+            </div>
+        </div>
+        <footer> Alura- Imersão DEV - 2025</footer>
+    </body>
+</html>
+
+<style>
+
+/** CSS */
+
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: black;
+    color: white;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+/* Logo Styles */
+.logo {
+    width: auto;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    max-width: 150px;
+}
+
+/* Container with the background image */
+.container {
+    background-image: url('https://i.postimg.cc/TY28jTqJ/bg4-ia.jpg') no-repeat center center/cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Content div for text and button */
+.content {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px 40px;
+    border-radius: 8px;
+}
+
+.content h2 {
+    margin-bottom: 20px;
+}
+
+/* Button Styles */
+button {
+    background-color: #ff1b7b;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #1ABC9C;
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 10px;
+}
+
+</style>
+
+<script>
+    function jogar() {
+        idade = prompt("Qual a sua idade?");
+        if (idade < 18) {
+            alert("Você não pode jogar!");
+        } else {
+            alert("Você pode jogar!");   
+            
+            let escolhaJogador = parseInt(prompt("Digite 1 - Pedra, 2 - Papel ou 3 - Tesoura"));
+            let escolhaComputador = Math.floor(Math.random() * 3) + 1; 
+
+            function escolhaParaNome(escolha) {
+                if (escolha == 1) return "Pedra";
+                if (escolha == 2) return "Papel";
+                if (escolha == 3) return "Tesoura";
+                else return "Escolha inválida!";
+                }
+            
+            let nomeJogador = escolhaParaNome(escolhaJogador);
+            let nomeComputador = escolhaParaNome(escolhaComputador);
+
+            
+            if (escolhaJogador == escolhaComputador) {
+                alert ("Empate! Computador escolheu " + nomeComputador);
+            } else if ( 
+                (escolhaJogador == 1 && escolhaComputador == 3) || 
+                (escolhaJogador == 2 && escolhaComputador == 1) ||
+                (escolhaJogador == 3 && escolhaComputador == 2) 
+            ){
+                alert ("Você ganhou! Parabéns! Computador escolheu " + nomeComputador);
+            } else {
+                alert ("Você perdeu! Computador escolheu " + nomeComputador + " Tente novamente!");
+            }
+        }
+    alert("Obrigado por jogar!");
+    }
+</script>
