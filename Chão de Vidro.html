@@ -1,0 +1,134 @@
+<!Doctype html>
+<html lang="pt-BR">
+<body>
+    <img src=https://i.postimg.cc/GpCxYmvc/title.png" alt="Logo" class="logo">
+
+  <div class="container">
+    <div class="content">
+      <h2>Pra ganhar, é preciso coragem!</h2>
+      <p> Até mesmo para pisar em um chão feito de vidro</p>
+      <button onclick="jogar()">Bora jogar!</button>
+      <button onclick="reiniciar()" style ="display: none;" id="botaoReiniciar">Jogar Novamente</button>
+    </div>
+  </div>
+  <footer>Alura - Imersão DEV - 2025</footer>
+
+  <audio id="somVidro">
+    <source src="https://www.soundjay.com/glass/glass-break-2.mp3" type="audio/mpeg">
+  </audio>
+
+</body>
+
+
+<style>
+    /* CSS */
+
+/* Global Styles */
+body {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: white;
+  position: relative;
+}
+
+/* Logo Styles */
+.logo {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  max-width: 150px;
+  width: auto;
+}
+
+/* Container with the background image */
+.container {
+  background: url('https://preview.redd.it/rr41b8vy6hbe1.jpeg?auto=webp&s=4c13586285a1f3afe69dda747668dc5a467609d0') no-repeat center center/cover;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Content div for text and button */
+.content {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px 40px;
+  border-radius: 8px;
+}
+
+.content h2 {
+  margin-bottom: 20px;
+}
+
+/* Button Styles */
+button {
+  background-color: #ff1b7b;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #1ABC9C;
+}
+
+/* Footer Styles */
+footer {
+  text-align: center;
+  padding: 10px;
+}
+
+</style>
+
+<script>
+    
+var somVidroQuebrando = new Audio('https://www.myinstants.com/media/sounds/glass-breaking-sound-effect.mp3');
+var somVitoria = new Audio('https://www.myinstants.com/media/sounds/final-fantasy-victory.mp3');
+
+   function jogar() {
+    rodada = 1
+    while (rodada <= 5) {
+        console.log("Rodada: " + rodada)
+        
+        let tentativas = 3;
+        let escolhaJogador = prompt("Nível " + rodada + ", escolha um vidro (1, 2 ou 3):");
+
+        while ((escolhaJogador < 1 || escolhaJogador > 3) && tentativas > 1) {
+            tentativas--;
+            alert("Número inválido! Você tem " + tentativas + " tentativa(s) restante(s).");
+            escolhaJogador = prompt("Nível " + rodada + ", escolha um vidro (1, 2 ou 3):");
+        }
+
+        if (escolhaJogador < 1 || escolhaJogador > 3) {
+            alert("Você errou muitas vezes! Reiniciando o jogo...");
+            return jogar(); // reinicia o jogo
+        }
+
+        let pisoQuebrado = Math.floor(Math.random() * 3) + 1;
+        
+        if (escolhaJogador == pisoQuebrado) {
+            somVidroQuebrando.play();  
+            alert("Você quebrou o vidro! Fim de jogo!");
+            break;
+        } else {
+            alert("Você Passou! Piso quebrado era o: " + pisoQuebrado);
+        }
+        rodada++;
+    }
+
+    if (rodada > 5) {
+        somVitoria.play();
+        alert("Você venceu! Parabéns!");
+    }
+}
+
+function reiniciarJogo() {
+    jogar();
+}
+</script>
